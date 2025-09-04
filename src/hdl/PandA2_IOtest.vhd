@@ -50,7 +50,7 @@ Port (
     PANEL_F_O_1     : out   std_logic;
     PANEL_F_RESET   : out   std_logic; -- not driven
     PANEL_F_INT     : in    std_logic; -- not read
-    PANEL_F_OE      : out   std_logic; -- not driven
+    PANEL_F_OE      : out   std_logic; -- not driven (for ST1 test, swap the pin constraint of PANEL_F_OE and PANEL_F_SPARE_0 to read the value of BTN1 on ST1)
     PANEL_F_SPARE_0 : inout std_logic; -- used as TEMP_CTRL on DIO board
     PANEL_F_SPARE_1 : inout std_logic;
     PANEL_F_SPARE_2 : inout std_logic;
@@ -74,40 +74,40 @@ Port (
     -- MGT reference clock inputs
     CLK_MUX0_SEL        : out std_logic;
     CLK_MUX1_SEL        : out std_logic;
-    MGT_WR_IN0_P        : in  std_logic;
-    MGT_WR_IN0_N        : in  std_logic; 
-    MGT_REFCLK0_IN1_P   : in  std_logic;
-    MGT_REFCLK0_IN1_N   : in  std_logic;
-    MGT_REFCLK0_IN2_P   : in  std_logic;
-    MGT_REFCLK0_IN2_N   : in  std_logic;
-    MGT_REFCLK0_IN3_P   : in  std_logic;
-    MGT_REFCLK0_IN3_N   : in  std_logic;
-    MGT_REFCLK1_IN0_P   : in  std_logic;
-    MGT_REFCLK1_IN0_N   : in  std_logic;
-    MGT_REFCLK1_IN1_P   : in  std_logic;
-    MGT_REFCLK1_IN1_N   : in  std_logic;
-    MGT_REFCLK1_IN2_P   : in  std_logic;
-    MGT_REFCLK1_IN2_N   : in  std_logic;
-    MGT_REFCLK1_IN3_P   : in  std_logic;
-    MGT_REFCLK1_IN3_N   : in  std_logic;
+    MGT_WR_IN0_P        : in  std_logic; -- FMC GCLK0 (ST1)
+    MGT_WR_IN0_N        : in  std_logic; -- FMC GCLK0 (ST1)
+    MGT_REFCLK0_IN1_P   : in  std_logic; -- FMC_HA13 (ST1) x
+    MGT_REFCLK0_IN1_N   : in  std_logic; -- FMC_HA13 (ST1) x
+    MGT_REFCLK0_IN2_P   : in  std_logic; -- FMC GCLK1 (ST1)
+    MGT_REFCLK0_IN2_N   : in  std_logic; -- FMC GCLK1 (ST1)
+    MGT_REFCLK0_IN3_P   : in  std_logic; -- SI5338 CLK_REF1 (ST1) ??
+    MGT_REFCLK0_IN3_N   : in  std_logic; -- SI5338 CLK_REF1 (ST1) ??
+    MGT_REFCLK1_IN0_P   : in  std_logic; -- SI5338 CLK_REF0 (ST1) ??
+    MGT_REFCLK1_IN0_N   : in  std_logic; -- SI5338 CLK_REF0 (ST1) ??
+    MGT_REFCLK1_IN1_P   : in  std_logic; -- SI5338 CLK_REF2 (ST1) ??
+    MGT_REFCLK1_IN1_N   : in  std_logic; -- SI5338 CLK_REF2 (ST1) ??
+    MGT_REFCLK1_IN2_P   : in  std_logic; -- SI570 (not-fitted) (ST1) x
+    MGT_REFCLK1_IN2_N   : in  std_logic; -- SI570 (not-fitted) (ST1) x
+    MGT_REFCLK1_IN3_P   : in  std_logic; -- FMC_HA12 (ST1) x
+    MGT_REFCLK1_IN3_N   : in  std_logic; -- FMC_HA12 (ST1) x
     
     -- Other clock inputs
-    FMC_CLK0_M2C_P      : in    std_logic;
-    FMC_CLK0_M2C_N      : in    std_logic;
-    FMC_CLK1_M2C_P      : in    std_logic;
-    FMC_CLK1_M2C_N      : in    std_logic;
-    FMC_CLK2_BIDIR_P    : inout std_logic;
-    FMC_CLK2_BIDIR_N    : inout std_logic;
-    FMC_CLK3_BIDIR_P    : inout std_logic;
-    FMC_CLK3_BIDIR_N    : inout std_logic;
-    EXT_CLK_P           : in    std_logic;
-    EXT_CLK_N           : in    std_logic;
-    FMC_PRSNT_L         : in    std_logic;
-    FMC_PRSNT_H         : in    std_logic;
-    FMC_CLK_DIR         : in    std_logic;
-    CLK20_VCXO          : in    std_logic;
-    MGT_WR_IN1_P        : in    std_logic;
-    MGT_WR_IN1_N        : in    std_logic;
+    FMC_CLK0_M2C_P      : in    std_logic; -- FMC CLK 1 (ST1)
+    FMC_CLK0_M2C_N      : in    std_logic; -- FMC CLK 1 (ST1)
+    FMC_CLK1_M2C_P      : in    std_logic; -- FMC LA00_CC (ST1) x
+    FMC_CLK1_M2C_N      : in    std_logic; -- FMC LA00_CC (ST1) x
+    FMC_CLK2_BIDIR_P    : inout std_logic; -- FMC_LA12 (ST1) x
+    FMC_CLK2_BIDIR_N    : inout std_logic; -- FMC_LA12 (ST1) x
+    FMC_CLK3_BIDIR_P    : inout std_logic; -- FMC_LA11 (ST1) x
+    FMC_CLK3_BIDIR_N    : inout std_logic; -- FMC_LA11 (ST1) x
+    EXT_CLK_P           : in    std_logic; -- FMC_HA04 (ST1) x
+    EXT_CLK_N           : in    std_logic; -- FMC_HA04 (ST1) x
+    FMC_PRSNT_L         : in    std_logic; -- FMC_HA02 (ST1) x
+    FMC_PRSNT_H         : in    std_logic; -- FMC_HA02 (ST1) x
+    FMC_CLK_DIR         : in    std_logic; -- IO1_D10 (ST1) x
+    CLK20_VCXO          : in    std_logic; -- IO1_CLK_P (ST1) x
+    MGT_WR_IN1_P        : in    std_logic; -- MIPI1_CLK (ST1) ?x
+    MGT_WR_IN1_N        : in    std_logic; -- MIPI1_CLK (ST1) ?x
     
     -- Fan tacho
     FAN_TACH0 : in std_logic;
@@ -156,13 +156,16 @@ Port (
     LVDS1_DIR       : out std_logic;
     LVDS0_R         : in  std_logic;
     LVDS0_D         : out std_logic;
-    LVDS1_R         : in  std_logic;
-    LVDS1_D         : out std_logic;
+    LVDS1_R         : in  std_logic; -- LED2 (ST1) -- being read not driven!
+    LVDS1_D         : out std_logic; -- LED3 (ST1)
     
     --XU1 internal signals 
     LED2_N_PWR_SYNC : out std_logic;
     --I2C_SCL         : inout std_logic;
     --I2C_SDA         : inout std_logic;
+    
+    LA_P_33 : out STD_LOGIC := '0'; --CLK_SEL for HTG 4 SFP FMC (incorrectly pulled high?)
+    LA_N_33 : out STD_LOGIC := '1'; --OE enable for HTG 4SFP FMC
     );
 end PandA2_IOtest;
 
@@ -631,7 +634,7 @@ clk20_ctr: entity work.freq_counter
         refclk => sysclk,
         test_clock => CLK20_VCXO,
         freq_out => clk20_freq
-        );    
+);
         
  clk_vio_inst : clock_vio
   PORT MAP (
