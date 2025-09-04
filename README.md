@@ -4,6 +4,12 @@ Simple IO tester for the PandABox-II platform.
 
 Allows reading or driving IO signals using VIO cores. Bidirectional IOs can be read by default, but can be driven by setting the appropriate tri-state enable low. Note that signal driven by line-driver/reciever ICs may also need the appropriate DE/RE control set for the signal to be output.
 
+## Instructions for building
+
+Type `make` to build the FPGA bitstream.
+
+Type `make run-vivado` to open the project in Vivado and connect to the FPGA via JTAG (will also build the bitstream if not done before).
+
 ## Instructions for running
 
 125 MHz fabric clock requires configuration by the FSBL.
